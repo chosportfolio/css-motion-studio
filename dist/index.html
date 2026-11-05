@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="문구를 입력해 열 가지 글자 모션을 비교하고 원하는 효과의 코드를 복사하세요.">
+  <title>글자 모션 스튜디오</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%235740cc'/%3E%3Cpath fill='%23fff' d='m5 28 8-17h4L9 28zm8 0 8-17h4l-8 17zm8 0 8-17h5l-8 17z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="studio.css">
+  <script defer src="effects.js"></script>
+  <script defer src="studio.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="frame masthead-inner">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" focusable="false" aria-hidden="true"><rect width="40" height="40" rx="9" fill="currentColor"/><path d="m5 28 8-17h4L9 28zm8 0 8-17h4l-8 17zm8 0 8-17h5l-8 17z" fill="white"/></svg>
+        <span lang="en">CSS Motion Studio</span>
+      </div>
+      <nav class="studio-switch" aria-label="스튜디오 목록">
+        <a href="index.html" aria-current="page">글자 모션</a>
+        <a href="slides.html">이미지 슬라이드</a>
+      </nav>
+    </div>
+  </header>
+  <main class="frame">
+    <section class="intro" aria-labelledby="studio-title">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="ink-line" aria-hidden="true"></span><span lang="en">THE MOTION COLLECTION</span></p>
+        <h1 id="studio-title">글자 <em>모션</em></h1>
+        <p class="lede">같은 문장도 움직임에 따라 다르게 읽혀요. 문구를 바꿔 열 가지 효과를 비교해 보세요.</p>
+      </div>
+      <div class="specimen" aria-hidden="true">
+        <div class="specimen-sheet">
+          <i class="specimen-corner c1"></i><i class="specimen-corner c2"></i>
+          <svg viewBox="0 0 180 112" focusable="false">
+            <defs><path id="letter-shape" d="M26 83 53 25h13l27 58H77l-5-12H47l-5 12Zm26-24h15l-7.5-18Z" fill-rule="evenodd"/></defs>
+            <g transform="translate(49,-5)" fill="none" stroke="#b3a4f7" stroke-width="1.4"><use href="#letter-shape"/></g>
+            <g transform="translate(32,-2)" fill="none" stroke="#9982e9" stroke-width="1.4"><use href="#letter-shape"/></g>
+            <g transform="translate(15,1)" fill="#aa97ed"><use href="#letter-shape"/></g>
+            <g transform="translate(-2,4)" fill="#573cbb"><use href="#letter-shape"/></g>
+          </svg>
+          <div class="specimen-ruler"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="input-panel" aria-labelledby="phrase-label">
+      <div class="field-caption">
+        <label id="phrase-label" for="phrase">미리보기 문구</label>
+        <span class="field-help" id="phrase-help">최대 80자 · 비우면 예시 문구가 보여요.</span>
+      </div>
+      <div class="entry">
+        <input id="phrase" type="text" maxlength="1000" placeholder="예: 글자가 춤추는 순간" spellcheck="false" aria-describedby="phrase-help">
+        <span id="count" class="count">0 / 80</span>
+      </div>
+    </section>
+
+    <fieldset class="font-panel" aria-describedby="font-help">
+      <legend>글자 설정</legend>
+      <div class="font-controls">
+        <div class="font-field">
+          <label for="font-preset">글꼴 선택</label>
+          <select id="font-preset">
+            <option value="sans">기본 고딕</option>
+            <option value="serif">명조</option>
+            <option value="mono">고정폭</option>
+            <option value="custom">이름으로 직접 지정</option>
+            <option value="uploaded" disabled>업로드한 글꼴</option>
+          </select>
+        </div>
+        <div class="font-field font-custom" id="font-custom" hidden>
+          <label for="font-family">설치된 글꼴 이름</label>
+          <input id="font-family" type="text" maxlength="100" placeholder="예: 맑은 고딕" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="font-field font-upload">
+          <label for="font-file">글꼴 파일 적용</label>
+          <input id="font-file" type="file" accept=".woff2,.woff,.ttf,.otf" aria-describedby="font-help font-status">
+        </div>
+        <button id="font-reset" type="button">기본 글꼴로</button>
+      </div>
+      <p id="font-help">직접 지정한 글꼴은 보는 기기에 설치되어 있어야 해요. 글꼴 파일을 적용하면 복사한 코드에도 포함됩니다. WOFF2·WOFF·TTF·OTF, 최대 30MB.</p>
+      <p id="font-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div class="text-appearance-controls" aria-describedby="text-appearance-help">
+        <div class="text-appearance-field">
+          <label for="text-size">글자 크기</label>
+          <div class="text-size-input">
+            <input id="text-size" type="number" min="8" max="240" step="1" value="36" inputmode="numeric" aria-describedby="text-appearance-help text-appearance-status">
+            <span aria-hidden="true">px</span>
+          </div>
+        </div>
+        <div class="text-appearance-field">
+          <label for="text-color">글자 색상</label>
+          <div class="text-color-input">
+            <input id="text-color" type="color" value="#493491" aria-describedby="text-appearance-help">
+            <input id="text-color-hex" type="text" value="#493491" maxlength="7" spellcheck="false" autocomplete="off" aria-label="글자 색상 코드" aria-describedby="text-appearance-help text-appearance-status">
+          </div>
+        </div>
+        <button id="text-appearance-reset" type="button">크기·색상 초기화</button>
+      </div>
+      <p id="text-appearance-help">크기 8~240px · 색상표에서 고르거나 HEX 코드(예: #493491)를 입력하세요. 미리보기와 복사 코드에 함께 적용돼요.</p>
+      <p id="text-appearance-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </fieldset>
+
+    <section class="collection" aria-labelledby="gallery-title">
+      <div class="collection-heading">
+        <h2 id="gallery-title">모션 목록</h2>
+        <span class="section-index" lang="en">01 <span aria-hidden="true">—</span> 10</span>
+      </div>
+      <div id="gallery"></div>
+      <noscript><p>글자 모션을 보려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+    </section>
+  </main>
+  <footer class="frame footer"><span lang="en">CSS Motion Studio</span></footer>
+
+  <div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="copy-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-help">
+    <h2 id="dialog-title">모션 코드 복사</h2>
+    <p id="dialog-help">아래 코드를 전체 선택해 복사하세요.</p>
+    <textarea id="snippet" aria-label="복사할 모션 코드" readonly spellcheck="false"></textarea>
+    <button type="button" id="close-dialog">닫기</button>
+  </dialog>
+</body>
+</html>

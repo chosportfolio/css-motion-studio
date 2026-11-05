@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7f3">
+  <meta name="description" content="번호 탐색, 페이드, 아코디언 등 열 가지 이미지 슬라이드를 비교해 보세요.">
+  <title>이미지 슬라이드 · 글자 모션 스튜디오</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%235740cc'/%3E%3Cpath fill='white' d='m5 28 8-17h4L9 28zm8 0 8-17h4l-8 17zm8 0 8-17h5l-8 17z'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="studio.css">
+  <link rel="stylesheet" href="slide-keyframes.css">
+  <link rel="stylesheet" href="slides.css">
+  <link rel="stylesheet" href="photos.css">
+  <link rel="stylesheet" href="slide-size.css">
+  <script defer src="slide-export-assets.js"></script>
+  <script defer src="slides.js"></script>
+  <script defer src="slide-copy.js"></script>
+  <script defer src="photos.js"></script>
+  <script defer src="slide-size.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div class="frame masthead-inner">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" focusable="false" aria-hidden="true"><rect width="40" height="40" rx="9" fill="currentColor"/><path d="m5 28 8-17h4L9 28zm8 0 8-17h4l-8 17zm8 0 8-17h5l-8 17z" fill="white"/></svg>
+        <span lang="en">CSS Motion Studio</span>
+      </div>
+      <nav class="studio-switch" aria-label="스튜디오 목록">
+        <a href="index.html">글자 모션</a>
+        <a href="slides.html" aria-current="page">이미지 슬라이드</a>
+      </nav>
+    </div>
+  </header>
+  <main class="frame">
+    <section class="intro slide-intro" aria-labelledby="slide-title">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="ink-line" aria-hidden="true"></span><span lang="en">THE SLIDE COLLECTION</span></p>
+        <h1 id="slide-title">이미지 <em>슬라이드</em></h1>
+        <p class="lede">기본 예시를 둘러보고, 내 사진으로 바꿔 보세요. 열 가지 효과를 비교하고 마음에 드는 슬라이드의 코드를 가져가세요.</p>
+      </div>
+      <div class="poster-stack" aria-hidden="true"><i></i><i></i><i></i></div>
+    </section>
+    <section class="photo-panel" aria-labelledby="photo-title">
+      <div class="photo-panel-heading">
+        <div>
+          <h2 id="photo-title">미리보기 사진</h2>
+          <p id="photo-help">이미지마다 사진을 넣거나 여러 장을 한 번에 고를 수 있어요. 장당 최대 10MB예요.</p>
+        </div>
+        <div class="photo-actions">
+          <label class="photo-picker" for="photo-input">
+            <span id="photo-button-text">여러 사진 선택</span>
+            <input id="photo-input" type="file" accept="image/*" multiple aria-describedby="photo-help photo-status">
+          </label>
+          <button type="button" id="reset-photos" disabled>기본 예시로</button>
+        </div>
+      </div>
+      <div class="photo-count-row">
+        <label class="photo-count-label" for="photo-count">이미지 개수</label>
+        <div class="photo-count-field">
+          <input id="photo-count" type="number" min="1" max="10" step="1" value="3" inputmode="numeric" aria-describedby="photo-count-help photo-status">
+          <span aria-hidden="true">개</span>
+        </div>
+        <p id="photo-count-help">1~10개 · 줄였다 다시 늘리면 넣어 둔 사진이 돌아와요.</p>
+      </div>
+      <ol id="photo-thumbs" class="photo-thumbs" aria-label="선택한 사진 순서"></ol>
+      <div class="photo-panel-footer">
+        <p id="photo-status" role="status" aria-live="polite" aria-atomic="true">기본 예시 3장으로 비교하고 있어요.</p>
+        <p class="photo-local-note">선택한 사진은 이 브라우저에서만 사용해요.</p>
+      </div>
+    </section>
+    <fieldset class="slide-size-panel" aria-describedby="slide-size-help">
+      <legend>슬라이드 크기</legend>
+      <div class="slide-size-modes">
+        <label class="slide-size-mode">
+          <input type="radio" name="slide-size-mode" value="custom" checked>
+          <span>직접 크기 입력</span>
+        </label>
+        <label class="slide-size-mode">
+          <input type="radio" name="slide-size-mode" value="viewport">
+          <span>화면 꽉 채우기</span>
+        </label>
+      </div>
+      <div class="slide-size-dimensions">
+        <div class="slide-size-dimension">
+          <label for="slide-width">가로</label>
+          <div class="slide-size-input">
+            <input id="slide-width" type="number" min="80" max="7680" step="1" value="640" inputmode="numeric" aria-describedby="slide-size-range slide-size-status">
+            <span aria-hidden="true">px</span>
+          </div>
+        </div>
+        <span class="slide-size-times" aria-hidden="true">×</span>
+        <div class="slide-size-dimension">
+          <label for="slide-height">세로</label>
+          <div class="slide-size-input">
+            <input id="slide-height" type="number" min="80" max="7680" step="1" value="280" inputmode="numeric" aria-describedby="slide-size-range slide-size-status">
+            <span aria-hidden="true">px</span>
+          </div>
+        </div>
+        <p id="slide-size-range">가로·세로 각각 80~7,680px</p>
+      </div>
+      <p id="slide-size-help">입력한 크기는 이미지 영역에 적용돼요. 좁은 화면에서는 비율을 유지하며 축소되고, 목록에서도 크기를 줄여 미리 보여드려요.</p>
+      <p id="slide-size-status" role="status" aria-live="polite" aria-atomic="true"></p>
+    </fieldset>
+    <section class="collection slide-collection" aria-labelledby="slide-list-title">
+      <div class="collection-heading"><h2 id="slide-list-title">슬라이드 목록</h2><span class="section-index" lang="en">01 <span aria-hidden="true">—</span> 10</span></div>
+      <div id="slide-gallery"></div>
+      <noscript><p>슬라이드를 보려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+    </section>
+  </main>
+  <footer class="frame footer"><span lang="en">CSS Motion Studio</span></footer>
+  <div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="copy-dialog" aria-labelledby="slide-copy-title" aria-describedby="slide-copy-help">
+    <h2 id="slide-copy-title">슬라이드 코드 복사</h2>
+    <p id="slide-copy-help">원하는 위치에 붙여 넣으면 제목·설명 없이 슬라이드만 표시돼요. HTML 저장으로 바로 실행할 파일도 받을 수 있어요.</p>
+    <textarea id="snippet" aria-label="복사할 슬라이드 코드" readonly spellcheck="false"></textarea>
+    <p id="slide-copy-feedback" role="status" aria-live="polite"></p>
+    <div class="card-actions">
+      <button type="button" class="copy" id="slide-copy-again">코드 복사</button>
+      <button type="button" id="slide-download">HTML 저장</button>
+      <button type="button" id="close-dialog">닫기</button>
+    </div>
+  </dialog>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Local settings and credentials
+.env
+.env.*
+!.env.example
+.openai/
+.codex/
+
+# Optional tooling and generated archives
+node_modules/
+*.log
+*.tar.gz
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

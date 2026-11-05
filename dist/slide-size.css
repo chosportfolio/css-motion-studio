@@ -1,0 +1,34 @@
+.slide-size-panel {
+  min-width: 0;
+  margin: 22px 0 0;
+  padding: 18px 26px 20px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: var(--card);
+}
+.slide-size-panel legend { padding: 0 7px; font-size: 1rem; font-weight: 700; letter-spacing: -.035em; }
+.slide-size-modes { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.slide-size-mode { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; cursor: pointer; font-size: .86rem; font-weight: 600; }
+.slide-size-mode input { width: 17px; height: 17px; margin: 0; accent-color: var(--accent); cursor: pointer; }
+.slide-size-dimensions { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+.slide-size-dimension { display: grid; gap: 6px; }
+.slide-size-dimension > label { font-size: .78rem; font-weight: 650; }
+.slide-size-input { display: inline-flex; align-items: center; gap: 7px; font-size: .76rem; color: var(--muted); }
+.slide-size-input input { width: 104px; min-height: 42px; padding: 9px 10px; border: 1px solid #d7ccef; border-radius: 6px; background: white; color: var(--ink); }
+.slide-size-input input[aria-invalid="true"] { border-color: #a13d27; }
+.slide-size-input input:disabled { color: #837e8c; border-color: #e7e3eb; background: #f6f4f8; }
+.slide-size-times { align-self: flex-end; padding-bottom: 11px; color: var(--muted); }
+#slide-size-range { margin: 0 0 11px; color: var(--muted); font-size: .73rem; line-height: 1.5; }
+#slide-size-help { margin: 13px 0 0; color: var(--muted); font-size: .78rem; line-height: 1.6; }
+#slide-size-status { margin: 8px 0 0; color: var(--accent); font-size: .76rem; line-height: 1.5; }
+#slide-size-status:empty { display: none; }
+#slide-size-status.has-error { color: #a13d27; }
+.slide-size-panel.is-viewport .slide-size-dimension > label, .slide-size-panel.is-viewport #slide-size-range { color: #837e8c; }
+@media (max-width: 650px) {
+  .slide-size-panel { padding: 15px 18px 18px; }
+  #slide-size-range { flex-basis: 100%; margin-bottom: 0; }
+}
+@media (max-width: 370px) {
+  .slide-size-input input { width: 85px; }
+  .slide-size-dimensions { gap: 9px; }
+}
