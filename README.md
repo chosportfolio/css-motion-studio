@@ -2,6 +2,8 @@
 
 문구와 사진을 바꿔 **텍스트 애니메이션 10종과 이미지 슬라이드 10종**을 비교하고, 선택한 설정을 코드로 가져갈 수 있는 프론트엔드 도구입니다.
 
+**[사이트 바로가기](https://chosportfolio.github.io/css-motion-studio/)** · [이미지 슬라이드](https://chosportfolio.github.io/css-motion-studio/slides.html)
+
 ## 제작 목적
 
 웹페이지에서 자주 사용하는 텍스트 애니메이션을 HTML5와 CSS3로 직접 제작하고 모음집으로 정리했습니다. 개별 예제를 보는 데서 끝나지 않고, 다른 사람도 원하는 효과를 골라 자신의 웹페이지에 사용할 수 있도록 제공하는 것이 목표입니다.
@@ -60,12 +62,25 @@ python -m http.server 8000 --directory dist
 - [글자 모션 열기](http://localhost:8000/index.html)
 - [이미지 슬라이드 열기](http://localhost:8000/slides.html)
 
+## GitHub Pages 배포
+
+공개 사이트는 [GitHub Pages](https://chosportfolio.github.io/css-motion-studio/)에서 제공합니다. `.github/workflows/pages.yml`이 `main` 브랜치에 변경 사항을 push할 때마다 `dist/` 폴더를 자동으로 배포합니다. 별도의 백엔드 서버나 패키지 설치는 필요하지 않습니다.
+
+1. 필요한 파일을 수정합니다. 슬라이드 CSS·SVG를 수정했다면 아래의 복사용 자산 갱신 명령도 실행합니다.
+2. 변경 사항을 커밋하고 `git push origin main`으로 올립니다.
+3. 저장소의 [Actions](https://github.com/chosportfolio/css-motion-studio/actions/workflows/pages.yml)에서 `Deploy GitHub Pages` 실행 결과를 확인합니다.
+
+필요하면 같은 Actions 화면의 `Run workflow`로 수동 배포할 수 있습니다.
+
 ## 파일 구성
 
 `dist/`에는 브라우저에서 사용하는 HTML·CSS·JavaScript와 이미지가 들어 있습니다. `scripts/`는 개발 중 복사용 자산을 갱신할 때 사용합니다.
 
 ```text
 css-motion-studio/
+├── .github/
+│   └── workflows/
+│       └── pages.yml            # main 변경 시 GitHub Pages 자동 배포
 ├── dist/
 │   ├── index.html               # 글자 모션 페이지
 │   ├── effects.js               # 원본 글자 효과와 키프레임 데이터
